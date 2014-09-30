@@ -32,3 +32,5 @@ The architecture worksheet is on the wiki: https://github.com/ashesi-SE/A-team.w
 
 •	A link to your wiki (see below)
 https://github.com/ashesi-SE/A-team.wiki.git
+
+Todd's readme edit
