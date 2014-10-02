@@ -25,6 +25,28 @@
 			return $this->query($query);
 		}
 		
+		
+		//
+		function search($name){
+		$query="select * 
+			from seller, category, location, price_type 
+			where seller.seller_location=location.location_name 
+			and seller.product_category=category.category_name 
+			and seller.price_type=price_type.price_type  
+			and (seller.product_name like '%$name%'
+			or seller.product_category like '%$name%'
+			or seller.seller_name like '%$name%'
+			or seller.price_type like '%$name%'
+			or seller.price like '%$name%'
+			)";
+					
+			if(!$this->query($query)){
+				echo "not working";
+				return false;
+			}
+			return $this->fetch();		
+		}
+		
 		//return seller
 		function get_seller($id){
 			$query="select * from seller where seller_id=$id";
