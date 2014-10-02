@@ -1,6 +1,6 @@
 body{
 	/*background-image: url("image1.jpg");*/
-	background-color: firebrick ;	
+	background-color: tan ;	
 }
 .header{
 	height: 20px;
@@ -13,7 +13,7 @@ body{
 }
 .main{
 	min-height: 300px;
-	height: auto;
+	height: relative;
 	width: 1050px;
 	background-color:white;
 	margin: auto;
@@ -29,12 +29,31 @@ body{
 	color: darkslategray ;
 }
 
+.formlabel {
+	text-align: left;
+	height: 20px;
+	margin: -60px;
+	font-size: 16px;
+	font-family: 'Segoe UI Light';
+	color: maroon ;
+}
+
 .textbox {
 	border:1px solid #456879;
 	background-color: #8FCDBE;
 	border-radius: 0px;
 	height: 22px;
 	width: 650px;
+	vertical-align: center;
+	margin-top: 10px;
+}
+
+.textbox1 {
+	border:1px solid #456879;
+	/*background-color: #8FCDBE;*/
+	border-radius: 0px;
+	height: 22px;
+	width: 450px;
 	vertical-align: center;
 	margin-top: 10px;
 }
@@ -49,8 +68,8 @@ body{
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
+  /*cursor: pointer;*/
+  /*background-image: none;*/
   border: 1px solid transparent;
   border-radius: 0px;
 
@@ -58,8 +77,8 @@ body{
 
 .btn-primary{
 	/*border:1px solid #456879;*/
-	color: white;
-	background-color: darkmagenta   ;
+	color: black;
+	background-color: tan;
 	width: 100px;
 	height: 30px;
 	margin: right;
@@ -67,7 +86,7 @@ body{
 .btn-primary:hover{
 	cursor:hand;
     font-weight:bold;
-    background-color: darkorchid ;
+    background-color: saddlebrown ;
     color: black;
 }
 .btn-secondary{
@@ -76,13 +95,21 @@ body{
 	width: 90px;
 	height: 25px;
 }
+.btn-add{
+	color: yellow;
+	background-color: saddlebrown;
+	width: 80px;
+	height: 25px;
+}
+
 .btn-secondary:hover{
 	color: white;
 	width: 90px;
 	height: 25px;
 }
 .footer{
-	color: darkgrey;
+	color: black;
+	font-family: 'calibri';
 	/*background-color: brown;*/
 	height: 30px;
 	/*width: 1500px;*/
@@ -173,14 +200,14 @@ body{
     #divMenu li {
         list-style: none;
         position: relative;
-        background: #641b1b;
+        background: #018D6B;
         font-family: 'Segoe UI Light';
     }
  
         #divMenu li li {
             list-style: none;
             position: relative;
-            background: #641b1b;
+            background: #018D6B;
             left: 148px;
             top: -27px;
             font-family: 'Segoe UI Light';
@@ -211,15 +238,15 @@ body{
     }
  
     #divMenu li:hover {
-        background-color: #945c7d;
+        background-color: saddlebrown;
     }
  
     #divMenu ul li:hover ul li a:hover {
-        background-color: #945c7d;
+        background-color: saddlebrown;
     }
  
     #divMenu a:hover {
-        font-weight: bold;
+        /*font-weight: bold;*/
     }
 
     .reportTable 
@@ -230,16 +257,16 @@ body{
 
 .reportTable .header
 {
-    background-color: darkmagenta ;
+    background-color: tan ;
     text-transform: uppercase;
-    color: White;
-    font-family: 'Arial';
+    font-family: 'Segoe UI Light';
+	color: maroon ;
     font-weight: lighter;
 }
 
 .reportTable .row1
 {
-    background-color: firebrick;
+    background-color: #DCDCDC;
 }
 
 .reportTable .row2
@@ -249,5 +276,5 @@ body{
 
 .reportTable tr:hover
 {
-    background-color:maroon;
+    background-color:tan;
 }

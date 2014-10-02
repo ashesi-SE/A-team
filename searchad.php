@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>popSell-Out</title>
+	<title>Search Results</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -68,8 +68,8 @@
 		<div align="middle" class="main">
 						<table>
 							<tr class="pagehead" align="right">
-								<td align="left"> ~All Products & Services~</td>
-								<td width="660"></td>
+								<td align="left"> ~Search Results~</td>
+								<td width="760"></td>
 							</tr>
 						</table>
 						<table width="90%" class="reportTable">
@@ -80,20 +80,18 @@
 							</tr>
 
 							<?php
-
-							include("seller.php");
-				$obj = new seller();
-
-	if(! $obj->connect()){
-			echo"Cannot connect to database";
-	   exit();
-
-}
-	   if($obj->get_sellers()){
-	   $result=$obj->get_sellers();
-
-	   $row=$obj->fetch();
-	   $row_counter=0;	
+									$search_text;
+		
+									include("seller.php");
+									$obj = new seller();
+									
+									
+									if(isset($_POST['search_text'])){		
+										$search_text=$_POST['search_text'];
+										
+										
+										$row=$obj->search($search_text);
+										$row_counter=0;	
 							while($row){
 		
 									if($row_counter%2==0){
@@ -102,26 +100,20 @@
 									else{
 									$style=" class='row2' ";
 								}
-			echo"<tr $style><td>Image:";
-		echo '<img src="data:image/jpeg;base64,'.base64_encode($row['product_image'] ).'"/><br>';	
-		echo "ProductName:";
-		echo"$row[product_name]<br>";
+								echo "<tr $style >";
+				 				echo "<td>$row[product_name]<br>";
+				  				echo "$row[product_category]<br>";
+				 				echo "$row[product_details]<br>";
+				 				echo "$row[price]</td>";
+				 				echo "<td>$row[seller_name]</td>";
+				 				echo "<td>$row[seller_phone]</td>";
+				 				echo "</tr>";
+				 				$row=$obj->fetch();
+								$row_counter++;
+		                     }
+		                 }
 
-		echo "Price:";
-		echo"$row[price]<br>";
-		echo "ProductType:";
-		echo"$row[product_category]<br></td>";
-		echo "<td>SellerName:";
-		echo"$row[seller_name]</td>";
-		echo "<td>Phone No:";
-		echo"$row[seller_phone]</td></tr>";
-
-		$row=$obj->fetch();
-		$row_counter++;
-	   }
-	}
-
-?>
+							?>
 
 						</table>
 
@@ -136,4 +128,4 @@
 			popSell-Out Copyright 2014 | Powered by The A-Team.
 		</div>
 </body>
-</html>	
+</html>

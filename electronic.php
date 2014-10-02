@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>popSell-Out</title>
+	<title>Electronics</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -68,7 +68,7 @@
 		<div align="middle" class="main">
 						<table>
 							<tr class="pagehead" align="right">
-								<td align="left"> ~All Products & Services~</td>
+								<td align="left"> ~Electronics~</td>
 								<td width="660"></td>
 							</tr>
 						</table>
@@ -78,52 +78,32 @@
 								<td width="30">Seller</td>
 								<td width="30">Contact</td>
 							</tr>
-
 							<?php
-
 							include("seller.php");
-				$obj = new seller();
-
-	if(! $obj->connect()){
-			echo"Cannot connect to database";
-	   exit();
-
-}
-	   if($obj->get_sellers()){
-	   $result=$obj->get_sellers();
-
-	   $row=$obj->fetch();
-	   $row_counter=0;	
-							while($row){
+			$obj = new seller();
+		$obj->get_product_by_category('electronics');
+		$row = $obj->fetch();
 		
-									if($row_counter%2==0){
-									$style=" class='row1' ";
-									}
-									else{
-									$style=" class='row2' ";
-								}
-			echo"<tr $style><td>Image:";
-		echo '<img src="data:image/jpeg;base64,'.base64_encode($row['product_image'] ).'"/><br>';	
-		echo "ProductName:";
-		echo"$row[product_name]<br>";
-
-		echo "Price:";
-		echo"$row[price]<br>";
-		echo "ProductType:";
-		echo"$row[product_category]<br></td>";
-		echo "<td>SellerName:";
-		echo"$row[seller_name]</td>";
-		echo "<td>Phone No:";
-		echo"$row[seller_phone]</td></tr>";
-
-		$row=$obj->fetch();
-		$row_counter++;
-	   }
+	while($row){
+	echo "<tr>";
+	echo "<td>";
+	echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['product_image'] ).'"/>';
+	echo "</td>";
+	echo "<td>";
+	echo $row['product_name'];
+	echo "</td>";
+	echo "<td>";
+	echo $row['price'];
+	echo "</td>";
+	echo "<td>";
+	echo $row['price_type'];
+	echo "</td>";
+	echo "</tr>";
+	$row = $obj->fetch();
 	}
+	?>
 
-?>
-
-						</table>
+							</table>
 
 				</div>
 			</td>
