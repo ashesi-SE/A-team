@@ -54,22 +54,7 @@
 		}
 		
 		
-		//
-		// function search($name){
-		// $query="select * 
-		// 	from seller, category, location, price_type 
-		// 	where seller.seller_location=location.location_id 
-		// 	and seller.product_category=category.category_id 
-		// 	and seller.price_type=price_type.price_id  
-		// 	and (seller.product_category like '%$name%'
-		// 	or seller.seller_name like '%$name%'
-		// 	or seller.product_category like '%$name%')";
-					
-		// 	if(!$this->query($query)){
-		// 		return false;
-		// 	}
-		// 	return $this->fetch();		
-		// }
+	
 		
 		//return seller
 		function get_seller($id){
@@ -78,6 +63,15 @@
 				return false;
 			}
 			return $this->fetch();
+		}
+                
+                //return seller
+		function get_details($id){
+			$query="select * from seller where seller_id='$id'";
+			if(!$this->query($query)){
+				return false;
+			}
+			return $this->query($query);
 		}
 		
 		function get_all_categories(){

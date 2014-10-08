@@ -72,28 +72,36 @@
 								<td width="660"></td>
 							</tr>
 						</table>
-						<table width="90%" class="reportTable">
+                    
+                                  <?php
+
+                                        include("seller.php");
+                                        $obj = new seller();
+
+                                        if(! $obj->connect()){
+                                            //unable to pull from the database
+                                               echo"Error! Sorry we are unable to get any information for you currently";
+                                                exit();
+                                           }
+                                           
+                                        if($obj->get_sellers()){
+                                            $result=$obj->get_sellers();
+                                            $row=$obj->fetch();
+                                          
+                                            
+                                   ?>
+                    
+                 	<table width="90%" class="reportTable">
 							<tr class="header" >
 								<td width="330">Product Details</td>
 								<td width="30">Seller</td>
 								<td width="30">Contact</td>
 							</tr>
+                                                        </table>
 
-							<?php
-
-							include("seller.php");
-				$obj = new seller();
-
-	if(! $obj->connect()){
-			echo"Cannot connect to database";
-	   exit();
-
-}
-	   if($obj->get_sellers()){
-	   $result=$obj->get_sellers();
-
-	   $row=$obj->fetch();
-	   $row_counter=0;	
+		   
+                                                     <?php  
+                                                      $row_counter=0;	
 							while($row){
 		
 									if($row_counter%2==0){
@@ -102,7 +110,15 @@
 									else{
 									$style=" class='row2' ";
 								}
-									echo"<tr $style><td class='detaillabel'>";
+                                                                ?>
+                     
+                   
+                        <?php
+                                                                $id=$row['seller_id'];
+                                                                echo" <a href='buy_item.php?id=$id'>";
+                                                                echo'<table width="90%" class="reportTable">';
+                          
+                                                                echo"<tr $style><td class='detaillabel'>";
 								echo '<img src="data:image/jpeg;base64,'.base64_encode($row['product_image'] ).'"/><br>';	
 								echo "Product: ";
 								echo"$row[product_name]<br>";
@@ -117,7 +133,7 @@
 								echo"$row[seller_name]</td>";
 								echo "<td class='detaillabel' align='center'>";
 								echo"<b>$row[seller_phone]</b></td></tr>";
-
+                                                                echo"</table></a>";
 								$row=$obj->fetch();
 								$row_counter++;
 							   }
@@ -125,7 +141,7 @@
 
 ?>
 
-						</table>
+			
 						<br>
 						<br>
 

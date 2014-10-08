@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Fashion</title>
+	<title>Education</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -48,7 +48,7 @@
 					            <li><a href="#">Berekuso Township</a></li>
 					            <li><a href="#">Comet</a></li>
 					        </ul></li>
-					        <li><a href="#">Help & Support</a></li>
+					        <li><a href="#">Fashion</a></li>
 					    </ul>
 					    </div>
 
@@ -69,21 +69,27 @@
 						<table>
 							<tr class="pagehead" align="right">
 								<td align="left"> ~Fashion~</td>
-								<td width="820"></td>
+								<td width="800"></td>
 							</tr>
 						</table>
+						
+										<?php
+							include("seller.php");
+			$obj = new seller();
+			if($obj->get_product_by_category('fashion')){
+		$obj->get_product_by_category('fashion');
+		$row = $obj->fetch();
+		?>
+						
 						<table width="90%" class="reportTable">
 							<tr class="header" >
 								<td width="330">Product Details</td>
 								<td width="30">Seller</td>
 								<td width="30">Contact</td>
 							</tr>
-							<?php
-							include("seller.php");
-			$obj = new seller();
-		$obj->get_product_by_category('fashion');
-		$row = $obj->fetch();
-		
+							</table>
+			
+		<?php
 $row_counter=0;	
 							while($row){
 		
@@ -93,6 +99,12 @@ $row_counter=0;
 									else{
 									$style=" class='row2' ";
 								}
+								?>
+								<?php
+								$id=$row['seller_id'];
+                                echo" <a href='buy_item.php?id=$id'>";
+								echo'<table width="90%" class="reportTable">';
+								
 									echo"<tr $style><td class='detaillabel'>";
 								echo '<img src="data:image/jpeg;base64,'.base64_encode($row['product_image'] ).'"/><br>';	
 								echo "Product: ";
@@ -108,9 +120,10 @@ $row_counter=0;
 								echo"$row[seller_name]</td>";
 								echo "<td class='detaillabel' align='center'>";
 								echo"<b>$row[seller_phone]</b></td></tr>";
-
+								 echo"</table></a>";
 								$row=$obj->fetch();
 								$row_counter++;
+							   }
 							   }
 	?>
 
