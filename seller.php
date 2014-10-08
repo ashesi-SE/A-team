@@ -14,26 +14,6 @@
 			$query="select * from seller";
 			return $this->query($query);
 		}
-
-				function search($name){
-		$query="select * 
-			from seller, category, location, price_type 
-			where seller.seller_location=location.location_name 
-			and seller.product_category=category.category_name 
-			and seller.price_type=price_type.price_type  
-			and (seller.product_name like '%$name%'
-			or seller.product_category like '%$name%'
-			or seller.seller_name like '%$name%'
-			or seller.price_type like '%$name%'
-			or seller.price like '%$name%'
-			)";
-					
-			if(!$this->query($query)){
-				echo "not working";
-				return false;
-			}
-			return $this->fetch();		
-		}
 		
 		//add new seller
 		function add_seller($seller_name,$seller_location,$seller_email,$seller_phone,$product_name,
@@ -44,32 +24,6 @@
 			product_category='$product_category',product_image='$product_image',price='$price',price_type='$price_type'";
 			return $this->query($query);
 		}
-
-				function get_sellers(){
-			$query="select * FROM seller ORDER BY `seller_id` DESC";
-			// if(!$this->query($query)){
-			// 	return false;
-			// }
-			return $this->query($query);
-		}
-		
-		
-		//
-		// function search($name){
-		// $query="select * 
-		// 	from seller, category, location, price_type 
-		// 	where seller.seller_location=location.location_id 
-		// 	and seller.product_category=category.category_id 
-		// 	and seller.price_type=price_type.price_id  
-		// 	and (seller.product_category like '%$name%'
-		// 	or seller.seller_name like '%$name%'
-		// 	or seller.product_category like '%$name%')";
-					
-		// 	if(!$this->query($query)){
-		// 		return false;
-		// 	}
-		// 	return $this->fetch();		
-		// }
 		
 		//return seller
 		function get_seller($id){
@@ -92,11 +46,6 @@
 		
 		function get_all_locations(){
 			$query="select * from location ORDER by location_name";
-			return $this->query($query);
-		}
-		
-		function get_product_by_category($category_name){
-			$query="select * from seller where product_category='$category_name'";
 			return $this->query($query);
 		}
 	}
