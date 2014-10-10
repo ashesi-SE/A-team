@@ -38,12 +38,20 @@ body{
 	color: maroon ;
 }
 
+.detaillabel {
+	height: 20px;
+	margin: -60px;
+	font-size: 16px;
+	font-family: 'calibri';
+	color: black;
+}
+
 .textbox {
 	border:1px solid #456879;
 	background-color: #8FCDBE;
 	border-radius: 0px;
 	height: 22px;
-	width: 650px;
+	width: 350px;
 	vertical-align: center;
 	margin-top: 10px;
 }
@@ -53,23 +61,18 @@ body{
 	/*background-color: #8FCDBE;*/
 	border-radius: 0px;
 	height: 22px;
-	width: 450px;
+	width: 350px;
 	vertical-align: center;
 	margin-top: 10px;
 }
 
 .btn {
   display: inline-block;
-  padding: 6px 12px;
   margin-bottom: 0;
-  font-size: 18px;
   font-weight: normal;
-  line-height: 1.428571429;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  /*cursor: pointer;*/
-  /*background-image: none;*/
   border: 1px solid transparent;
   border-radius: 0px;
 
@@ -78,6 +81,9 @@ body{
 .btn-primary{
 	/*border:1px solid #456879;*/
 	color: black;
+	font-size: 18px;
+	line-height: 1.428571429;
+	padding: 6px 12px;
 	background-color: tan;
 	width: 100px;
 	height: 30px;
@@ -90,11 +96,20 @@ body{
     color: black;
 }
 .btn-secondary{
+	font-size: 14px;
 	color: yellow;
-	background-color: maroon;
-	width: 90px;
-	height: 25px;
+	background-color: saddlebrown;
+	line-height: 0;
+	padding: 6px 12px;
+	width: 60px;
+	height: 15px;
+	margin: right;
 }
+.btn-secondary:hover{
+	color: black;
+	background-color: saddlebrown;
+}
+
 .btn-add{
 	color: yellow;
 	background-color: saddlebrown;
@@ -102,50 +117,24 @@ body{
 	height: 25px;
 }
 
-.btn-secondary:hover{
-	color: white;
-	width: 90px;
-	height: 25px;
+.btn-mail{
+	color: yellow;
+	background-color: saddlebrown;
+	width: 300px;
+	height: 35px;
 }
+
 .footer{
 	color: black;
 	font-family: 'calibri';
+	line-height: 3.428571429;
 	/*background-color: brown;*/
-	height: 30px;
+	height: 40px;
 	/*width: 1500px;*/
-	font-size: 16px;
+	font-size: 14px;
 	text-align: center;
 }
-.menuitem {
-	color:#018D6B;
-	cursor:hand;
-	/*border-bottom: 2px solid #CCCCCC;*/
-	height: 30px;
-	padding-top: 7px;
-	padding-bottom: -5px;
-	width: 280px;
-	-webkit-transition: width 2s; 
-    transition: width 2s;
-}
-/*./*//*menuitem:hover{
-	color:black;
-	font-weight:bold;*/
-	/*font-size: 20px;*/
-/*	background-color: gainsboro;
-	border-bottom: 2px solid #CCCCCC;
-	height: 30px;
-	padding-top: 5px;
-	padding-bottom: -5px;*/
-	/*height:50px;*/
-	/*font-size: 18px;*/
-/*}*//*/*/
 
-.menuitem:hover{
-	color: white;
-	/*height: 30px;*/
-	padding-top: 5px;
-	padding-bottom: -5px;
-}
 #mainnav{
 	width:90%;
 	vertical-align:top;
@@ -162,92 +151,49 @@ body{
     margin: 5px;
 }
 
-/*.category {
-    width: 100px;
-    height: 100px;
-    background: red;
-    border-color: white;
-    -webkit-transition: width 2s; 
-    transition: width 2s;
+ul#horiznav, #horiznav ul{/*remove the bullets from the dropdown ul as well*/
+margin:0;
+padding:0;
+list-style-type:none;
+height:32px;
+font-family: 'arial';
 }
-.category:hover{
-	width: 250px;
-}*/
 
-#divMenu, ul, li, li li {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI Light';
+#horiznav li{
+float:left;
+width:152px;
+position:relative/*set position:relative as the start point for absolutely positioning the dropdown*/
 }
- 
-#divMenu {
-	font-family: 'Segoe UI Light';
-	vertical-align:top;
-		height: 30px;
-	padding-top: 7px;
-	padding-bottom: -5px;
-    width: 150px;
-    height: 27px;
-    margin-top: -130px;
+
+#horiznav li a{
+display:block;
+width:150px;
+line-height:30px;
+text-align:center;
+color:white;
+text-decoration:none;
+background-color:#018D6B;
+border:1px solid white
 }
- 
-#divMenu ul
-{
-     line-height: 25px;
-     font-family: 'Segoe UI Light';
+
+#horiznav li a:hover{
+background-color: saddlebrown ;
 }
- 
-    #divMenu li {
-        list-style: none;
-        position: relative;
-        background: #018D6B;
-        font-family: 'Segoe UI Light';
-    }
- 
-        #divMenu li li {
-            list-style: none;
-            position: relative;
-            background: #018D6B;
-            left: 148px;
-            top: -27px;
-            font-family: 'Segoe UI Light';
-        }
- 
- 
-    #divMenu ul li a {
-        width: 148px;
-        height: 25px;
-        display: block;
-        text-decoration: none;
-        text-align: center;
-        font-family: 'Segoe UI Light';
-        color:#ffffff;
-        border:1px solid #eee;
-    }
- 
-    #divMenu ul ul {
-        position: absolute;
-        visibility: hidden;
-        top: 27px;
-        font-family: 'Segoe UI Light';
-    }
- 
-    #divMenu ul li:hover ul {
-        visibility: visible;
-        font-family: 'Segoe UI Light';
-    }
- 
-    #divMenu li:hover {
-        background-color: saddlebrown;
-    }
- 
-    #divMenu ul li:hover ul li a:hover {
-        background-color: saddlebrown;
-    }
- 
-    #divMenu a:hover {
-        /*font-weight: bold;*/
-    }
+
+#horiznav li ul{
+display:none;/*hide the dropdown*/
+position:absolute;/*position it absolutely..*/
+left:0;/*...align the left edge with the left edge of the parent li...*/
+top:32px/*...and 32px down from the top - 30px height + 2px for the border*/
+}
+
+#horiznav li:hover ul {
+display:block/*display the ul when the parent li is hovered*/
+}
+
+#horiznav li ul a{
+background-color:#018D6B/*give the dropdown a different background colour*/
+}
 
     .reportTable 
 {
@@ -278,3 +224,20 @@ body{
 {
     background-color:tan;
 }
+
+.helptable .header
+{
+    text-transform: uppercase;
+    font-family: 'Segoe UI Light';
+	color: maroon;
+    font-weight: lighter;
+    background-color: white;
+}
+
+.helptable
+{
+    font-family: 'Segoe UI Light';
+    font-weight: lighter;
+    color: #018D6B;
+}
+

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Electronics</title>
+	<title>Sellers at Colombiana</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -90,15 +90,15 @@
 		<div align="middle" class="main">
 						<table>
 							<tr class="pagehead" align="right">
-								<td align="left"> ~Electronics~</td>
-								<td width="800"></td>
+								<td align="left"> ~Sellers at Colombiana~</td>
+								<td width="670"></td>
 							</tr>
 						</table>
 						<table width="90%" class="reportTable">
 							<?php
 							include("seller.php");
 			$obj = new seller();
-		$obj->get_product_by_category('electronics');
+		$obj->get_product_by_location('Colombiana');
 		$row = $obj->fetch();
 		
 $row_counter=0;	

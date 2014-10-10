@@ -15,7 +15,7 @@
 			return $this->query($query);
 		}
 
-				function search($name){
+		function search($name){
 		$query="select * 
 			from seller, category, location, price_type 
 			where seller.seller_location=location.location_name 
@@ -79,6 +79,15 @@
 			}
 			return $this->fetch();
 		}
+
+		                //return seller
+		function get_details($id){
+			$query="select * from seller where seller_id='$id'";
+			if(!$this->query($query)){
+				return false;
+			}
+			return $this->query($query);
+		}
 		
 		function get_all_categories(){
 			$query="select * from category ORDER by category_name";
@@ -97,6 +106,11 @@
 		
 		function get_product_by_category($category_name){
 			$query="select * from seller where product_category='$category_name'";
+			return $this->query($query);
+		}
+
+		function get_product_by_location($location_name){
+			$query="select * from seller where seller_location='$location_name'";
 			return $this->query($query);
 		}
 	}

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Electronics</title>
+	<title>Education</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -90,7 +90,7 @@
 		<div align="middle" class="main">
 						<table>
 							<tr class="pagehead" align="right">
-								<td align="left"> ~Electronics~</td>
+								<td align="left"> ~Education~</td>
 								<td width="800"></td>
 							</tr>
 						</table>
@@ -98,7 +98,7 @@
 							<?php
 							include("seller.php");
 			$obj = new seller();
-		$obj->get_product_by_category('electronics');
+		$obj->get_product_by_category('education');
 		$row = $obj->fetch();
 		
 $row_counter=0;	

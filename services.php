@@ -2,8 +2,10 @@
 <html>
 
 <head>
-	<title>Electronics</title>
+	<title>Services</title>
 	<link rel="stylesheet" href="style.css">
+	<script src="jquery-1.11.0.js"></script>
+		<script src="gen.js"></script>
 </head>
 <body>
 	<table align="center">
@@ -90,15 +92,15 @@
 		<div align="middle" class="main">
 						<table>
 							<tr class="pagehead" align="right">
-								<td align="left"> ~Electronics~</td>
-								<td width="800"></td>
+								<td align="left"> ~Services~</td>
+								<td width="820"></td>
 							</tr>
 						</table>
 						<table width="90%" class="reportTable">
 							<?php
 							include("seller.php");
 			$obj = new seller();
-		$obj->get_product_by_category('electronics');
+		$obj->get_product_by_category('services');
 		$row = $obj->fetch();
 		
 $row_counter=0;	

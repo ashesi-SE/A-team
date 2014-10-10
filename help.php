@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Electronics</title>
+	<title>Help & Support</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -90,46 +90,41 @@
 		<div align="middle" class="main">
 						<table>
 							<tr class="pagehead" align="right">
-								<td align="left"> ~Electronics~</td>
-								<td width="800"></td>
+								<td align="left"> ~Help & Support~</td>
+								<td width="730"></td>
 							</tr>
 						</table>
-						<table width="90%" class="reportTable">
-							<?php
-							include("seller.php");
-			$obj = new seller();
-		$obj->get_product_by_category('electronics');
-		$row = $obj->fetch();
-		
-$row_counter=0;	
-							while($row){
-		
-									if($row_counter%2==0){
-									$style=" class='row1' ";
-									}
-									else{
-									$style=" class='row2' ";
-								}
-									$id=$row['seller_id'];
-                                echo" <a href='buy_item.php?id=$id'>";
-                                echo'<table width="90%" class="reportTable">';
-								echo"<tr $style><td width='400'class='detaillabel'>";
-								echo '<img src="data:image/jpeg;base64,'.base64_encode($row['product_image'] ).'" width="100" height="80"/><br>';
-								echo"$row[product_name]<br>";
-								echo"<br></td>";
-								echo "<td width='70' class='detaillabel' align='left'>";
-								echo"<b>$row[price]</b></td>";
-								echo "";
-								echo"</tr></table></a>";
-
-								$row=$obj->fetch();
-								$row_counter++;
-							   }
-	?>
-
-							</table>
-							<br>
-							<br>
+						<br>
+						<table width="90%" class="helptable">
+							<tr>
+								<td class="header">
+									All Comments, Questions and Feedback are Welcome
+								</td>
+							</tr>
+							<tr height="40">
+							</tr>
+							<tr>
+								<td align="center">
+									<iframe src="https://docs.google.com/forms/d/1Wdpkw0jqUVVn7pfEgqry9YRBQKSlUF3uE_A8j_o4U4A/viewform?embedded=true" width="760" height="880" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+								</td>
+							</tr>
+							<tr height="40">
+							</tr>
+							<tr>
+								<td>
+									Github Link: <b><i>https://github.com/ashesi-SE/A-team.git</i></b>
+								</td>
+							</tr>
+							<tr height="40">
+							</tr>
+							<tr>
+								<td align="center">
+									from the **A_Team**
+								</td>
+							</tr>
+						</table>
+						<br>
+						<br>
 
 				</div>
 			</td>

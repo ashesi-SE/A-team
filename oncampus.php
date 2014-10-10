@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Electronics</title>
+	<title>Sellers On-Campus</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -85,20 +85,19 @@
 
 				</td>
 				<td>
-
 		  <!-- main content -->
 		<div align="middle" class="main">
 						<table>
 							<tr class="pagehead" align="right">
-								<td align="left"> ~Electronics~</td>
-								<td width="800"></td>
+								<td align="left"> ~Sellers On Ashesi Campus~</td>
+								<td width="630"></td>
 							</tr>
 						</table>
 						<table width="90%" class="reportTable">
 							<?php
 							include("seller.php");
 			$obj = new seller();
-		$obj->get_product_by_category('electronics');
+		$obj->get_product_by_location('Ashesi campus');
 		$row = $obj->fetch();
 		
 $row_counter=0;	
