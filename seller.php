@@ -33,6 +33,14 @@
 			}
 			return $this->fetch();
 		}
+		function get_sellers(){
+			$query="select * FROM seller ORDER BY `seller_id` DESC";
+			if(!$this->query($query)){
+				return false;
+			}
+			return $this->query($query);
+		}
+
 		
 		function get_all_categories(){
 			$query="select * from category ORDER by category_name";
