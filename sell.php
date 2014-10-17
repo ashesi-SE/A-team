@@ -7,19 +7,67 @@
 	if(! $obj->connect()){
 			echo"Cannot connect to database";
 	   exit();
-	}         if(isset($_GET['sellerName'])){
-				 $sellerName = $_GET['sellerName'];
-		 		 $sellerLocation = $_GET['sellerLocation'];
-		  		$sellerEmail = $_GET['sellerEmail'];
-		    	$sellerPhone =$_GET['sellerPhone'];
-		    	$productName= $_GET['productName'];
-		    	$productImage= $_GET['productImage'];
-		 $productDetails = $_GET['productDetails'];
-		  $productPrice = $_GET['productPrice'];
-		  $productCategory = $_GET['productCategory'];
-		   $priceType = $_GET['priceType'];
+	}         if(isset($_POST['sellerName'])){
+				 $sellerName = $_POST['sellerName'];
+		 		 $sellerLocation = $_POST['sellerLocation'];
+		  		$sellerEmail = $_POST['sellerEmail'];
+		    	$sellerPhone =$_POST['sellerPhone'];
+		    	$productName= $_POST['productName'];
+		    	// $productImage= $_GET['productImage'];
+		 $productDetails = $_POST['productDetails'];
+		  $productPrice = $_POST['productPrice'];
+		  $productCategory = $_POST['productCategory'];
+		   $priceType = $_POST['priceType'];
 
-		    if(isset($_GET['submit'])){
+		   $allowedExts = array("gif", "jpeg", "jpg", "png");
+			$temp = explode(".", $_FILES["file"]["name"]);
+			$extension = end($temp);
+print_r($_FILES["file"]);
+if 	(
+		(
+			($_FILES["file"]["type"] == "image/gif")
+			|| ($_FILES["file"]["type"] == "image/jpeg")
+			|| ($_FILES["file"]["type"] == "image/jpg")
+			|| ($_FILES["file"]["type"] == "image/pjpeg")
+			|| ($_FILES["file"]["type"] == "image/x-png")
+			|| ($_FILES["file"]["type"] == "image/png")
+		)
+		//&& ($_FILES["file"]["size"] < 20000)
+		&& in_array($extension, $allowedExts)
+	)
+{
+
+
+	// echo "In parent if statement <br>";
+	if ($_FILES["file"]["error"] > 0) {
+		echo "In first child if statement <br>";
+    	echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+  	}
+  	else {
+  		// echo "In first child else statement <br>";
+	    // echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+	    // echo "Type: " . $_FILES["file"]["type"] . "<br>";
+	    // echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+	    // echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
+	    if (file_exists("upload/" . $_FILES["file"]["name"])) {
+	    	// echo "In second child if statement <br>";
+	      	echo $_FILES["file"]["name"] . " already exists. ";
+	    }
+	    else {
+	    	// echo "In second child else statement <br>";
+	      	move_uploaded_file($_FILES["file"]["tmp_name"],
+	      	"upload/" . $_FILES["file"]["name"]);
+	      	echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
+	    }
+	}
+}
+// "upload/" .
+else {
+	// echo "In parent else statement <br>";
+	echo "Invalid file";
+}
+			$productImage= $_FILES["file"]["name"];
+		    if(isset($_POST['submit'])){
 
 	  $obj->add_seller($sellerName,$sellerLocation,$sellerEmail,$sellerPhone,$productName,
 								$productDetails,$productCategory,$productImage,$productPrice,$priceType);
@@ -29,22 +77,16 @@
 		}  		
 		echo mysql_error();
 	}
-	// // if(! $obj->query($query)){
-	// 		echo"Error fetching data";
-	// }
-	// 	$row=$obj->fetch();
-	// 	$row_counter=0;
+	
 
-			// if(isset($_POST['submit'])){
-				
-			// }
+
 			
 	echo "<html>";
              
 			echo"<h1>Fill the form below to sell your product</h1>";
 	echo"<body>";
 
-			echo"<form action='sell.php' method='GET'>";
+			echo"<form action='sell.php' method='POST' enctype='multipart/form-data'>";
 
 				echo"<div>";
 				echo"Product Name:<input type='text' name='productName'  id='productName'/>";
@@ -56,16 +98,7 @@
 
 			echo"<div>";
 			
-								// echo " Product Category:<select name='productCategory' id='productCategory'>";
-								// if(!$obj->get_all_categories()){
-								// 	echo "Unable to get categories";
-								// }
-								// $row = $obj->fetch();
-								// while($row){
-								// 	echo "<option value='$row[category_id]' selected>$row[category_name] </option>";
-								// 	$row = $obj->fetch();
-								// }
-								// echo "</select>"; 
+								
 								
 			echo"</div>";
 
@@ -90,8 +123,9 @@
 			echo"</div>";
 	   					echo"<div> 
 
-				Product Image<input name='MAX_FILE_SIZE' value='102400' type='hidden'>
-						<input name='productImage' accept='image/jpeg' type='file'>
+				Product Image
+
+						<input type='file' name='file' id='file'><br>
 					</div>
 
 
@@ -155,110 +189,4 @@
 
 
 
-	<!-- <html>
-		<title>Sell</title>
-		<head>
-			<script src="jquery-1.11.0.js"></script>
-			<script src="gen.js"></script>
-		
-			<h1>Fill the form below to sell your product</h1>
-		</head>
-		<body>
-			<div id="divAdd">
-				<table>
-					<tr>
-						<td class="label">Seller Name: </td>
-						<td class="field"><input type="text" id="s_n" ></td>
-					</tr>
-					<tr>
-						<td class="label">Seller Location: </td>
-						<td class="field">
-							<?php
-								// echo "<select name='s_l' id='s_l'>";
-								// if(!$obj->get_all_locations()){
-								// 	echo "Unable to get categories";
-								// }
-								// $row = $obj->fetch();
-								// while($row){
-								// 	echo "<option value='$row[location_id]' selected>$row[location_name] </option>";
-								// 	$row = $obj->fetch();
-								// }
-								// echo "</select>"; 
-								?>
-								</td>
-					</tr>
-					<tr>
-						<td class="label">Seller Email: </td>
-						<td class="field"><input type="email" id="s_e" ></td>
-					</tr>
-					<tr>
-						<td class="label">Seller Phone: </td>
-						<td class="field"><input type="tel" id="s_p" ></td>
-					</tr>
-					<tr>
-						<td class="label">Product Name: </td>
-						<td class="field"><input type="text" id="p_n" ></td>
-					</tr>
-					<tr>
-						<td class="label">Product Description: </td>
-						<td class="field"><input type="text" id="p_d" style="height:100px;width:300px;font-size:14pt;"></td>
-					</tr>
-					<tr>
-						<td class="label">Product Category: </td>
-						<td class="field">
-							<?php
-								// echo "<select name='p_c' id='p_c'>";
-								// if(!$obj->get_all_categories()){
-								// 	echo "Unable to get categories";
-								// }
-								// $row = $obj->fetch();
-								// while($row){
-								// 	echo "<option value='$row[category_id]' selected>$row[category_name] </option>";
-								// 	$row = $obj->fetch();
-								// }
-								// echo "</select>"; 
-								?>
-								</td>
-					</tr>
-					<tr>
-						<td class="label">Product Image: </td>
-						<td>
-						<input name="MAX_FILE_SIZE" value="102400" type="hidden">
-						<input name="image" accept="image/jpeg" type="file">
-					</tr>
-					<tr>
-						<td class="label">Product price: </td>
-						<td class="field"><input type="text" id="p_p" ></td>
-					</tr>
-					<tr>
-						<td class="label">Is Product price fixed or negotiable?: </td>
-						<td class="field">
-							<?php
-								// echo "<select name='p_c' id='p_cp'>";
-								// if(!$obj->get_all_price_type()){
-								// 	echo "Unable to get categories";
-								// }
-								// $row = $obj->fetch();
-								// while($row){
-								// 	echo "<option value='$row[price_id]' selected>$row[price_type] </option>";
-								// 	$row = $obj->fetch();
-								// }
-								// echo "</select>"; 
-								?>
-								</td>
-					</tr>
-					<tr>
-							<td class="label"></td>
-							<td class="field">
-								<input type="button" value="save" name="submit" >
-								<input type="button" value="cancel" onclick="cancel_add()" >
-							</td>
-						</tr>
-			
-			
-			
-			
-				</table>
-			</div>
-			</body>
-	</html> -->
+	

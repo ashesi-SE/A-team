@@ -2,11 +2,16 @@
 <html>
 
 <head>
-	<title>Electronics</title>
+	<title>popSell-Out</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<table align="center">
+		<tr>
+			<td>
+			<marquee bgcolor="#420612" behavior="scroll" direction="left" scrollamount="2"><font face="Segoe UI Light" color="white" size="5">Welcome to popSellOut!!! The best place for all your on-line shopping. You can sell anything here.</font></marquee>
+				</td>
+		</tr>
 		<tr>
 			<td colspan="2" class="header">
 					<table align="center">
@@ -15,18 +20,12 @@
 					 			<div align="left"><a href="index.php"><img src="popsell.png" alt="popsell-out" width="250" height="100">
 					 			</a></div>
 							</td>
-							<td width="667px"></td>
-
-							<td>
-								<a href="login.php" class="btn btn-login">Admin Login</a>
-							</td>
-
-							<td width="50px">
-							</td>
+							<td width="867px"></td>
 						<td>
 
 							<!-- place AD button -->
-						<a href="new_sales.php" class="btn btn-primary">Post an AD!</a>
+						<a href="index.php" class="btn btn-primary">logout</a>
+						
 						</td>
 					</tr>
 				</table>
@@ -38,31 +37,7 @@
       				<tr>
       					<table align="center">
       						<tr>
-      							<td>
-					    <ul id="horiznav">
-					        <li><a href="index.php">Home</a></li>
-					        <li><a href="#">Categories</a>
-					                <ul>
-					            <li><a href="electronic.php">Electronics</a></li>
-					            <li><a href="food.php">Food</a></li>
-					            <li><a href="fashion.php">Fashion</a></li>
-					            <li><a href="services.php">Services</a></li>
-					            <li><a href="education.php">Education</a></li>
-					        </ul></li>
-					        <li><a href="#">Campus Location</a>
-					                <ul>
-					            <li><a href="oncampus.php">On-Campus Hostel</a></li>
-					            <li><a href="colombiana.php">Colombiana</a></li>
-					            <li><a href="dufie.php">Dufie Platinum</a></li>
-					            <li><a href="charlottes.php">Charlottes</a></li>
-					            <li><a href="masere.php">Masere</a></li>
-					            <li><a href="berekuso.php">Berekuso Town</a></li>
-					            <li><a href="comet.php">Comet</a></li>
-					            <li><a href="other.php">Other</a></li>
-					        </ul></li>
-					        <li><a href="help.php">Help & Support</a></li>
-					    </ul>
-					</td>
+      							
 
 					<td width="145px">
 					</td>
@@ -80,6 +55,12 @@
 			</table>
 					
 				</tr>
+				<tr>
+				<table width= "850px" align= "center">
+				<tr>
+				</tr>
+			</table>
+			</tr>
 
 			<tr>
 				<td width="100px">
@@ -91,18 +72,33 @@
 		<div align="middle" class="main">
 						<table>
 							<tr class="pagehead" align="right">
-								<td align="left"> ~Electronics~</td>
-								<td width="800"></td>
+								<td align="left"> ~All Products & Services~</td>
+								<td width="660"></td>
 							</tr>
 						</table>
 						<table width="90%" class="reportTable">
+							<!-- <tr class="header" >
+								<td width="330">Product Details</td>
+								<td width="30">Seller</td>
+								<td width="30">Contact</td>
+							</tr> -->
+						</table>
+
 							<?php
+
 							include("seller.php");
-			$obj = new seller();
-		$obj->get_product_by_category('electronics');
-		$row = $obj->fetch();
-		
-$row_counter=0;	
+				$obj = new seller();
+
+	if(! $obj->connect()){
+			echo"Error! Sorry we are unable to get any information for you currently";
+	   exit();
+
+}
+	   if($obj->get_sellers()){
+	   $result=$obj->get_sellers();
+
+	   $row=$obj->fetch();
+	   $row_counter=0;	
 							while($row){
 		
 									if($row_counter%2==0){
@@ -111,27 +107,34 @@ $row_counter=0;
 									else{
 									$style=" class='row2' ";
 								}
-									$id=$row['seller_id'];
-								$pic= $row['product_image'];
-                                echo" <a href='buy_item.php?id=$id'>";
+								$id=$row['seller_id'];
+                                
+                                $pic= $row['product_image'];
+                                //echo" <a href='buy_item.php?id=$id'>";
                                 echo'<table width="90%" class="reportTable">';
 								echo"<tr $style><td width='150'class='detaillabel'>";
 								echo '<img src="upload/'.$pic.'" width="120" height="100"/></td>';
+								 // <img src="upload/'.$pic.'"/> 
 								echo"<td class='detaillabels' width='250'>$row[product_name]<br></td>";
-								echo"<td class='detailed' width='350'>$row[product_category], $row[seller_location]</td>";
+								echo"<td class='detailed' width='300'>$row[product_category], $row[seller_location]</td>";
 								echo "<td class='detailprice' align='left'>";
 								echo"GHc $row[price]</td>";
+								echo "<td width='70' class='detaillabel' align='left'>";
+								echo "<a href='delete.php?id=$row[seller_id]'>Delete</a></td>";
 								echo "";
-								echo"</tr></table></a>";
+								
+								echo"</tr></table>";
 
 								$row=$obj->fetch();
 								$row_counter++;
 							   }
-	?>
+							}
 
-							</table>
-							<br>
-							<br>
+?>
+
+						</table>
+						<br>
+						<br>
 
 				</div>
 			</td>

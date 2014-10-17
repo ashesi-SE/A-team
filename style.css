@@ -1,6 +1,6 @@
 body{
 	/*background-image: url("image1.jpg");*/
-	background-color: tan ;	
+	background-color: dimgrey ;	
 }
 .header{
 	height: 20px;
@@ -46,13 +46,39 @@ body{
 	color: black;
 }
 
+.detailprice {
+	height: 20px;
+	margin: -60px;
+	font-size: 18px;
+	font-family: 'calibri';
+	color: dimgrey;
+}
+
+.detailed {
+	height: 20px;
+	margin: -60px;
+	font-size: 14px;
+	font-family: 'calibri';
+	color: dimgrey;
+}
+
+.detaillabels {
+	height: 20px;
+	margin: -60px;
+	font-size: 20px;
+	font-family: 'calibri';
+	color: darkslategray;
+	font-weight: bold;
+}
+
 .textbox {
 	border:1px solid #456879;
-	background-color: #8FCDBE;
+	background-color: #420612;
 	border-radius: 0px;
 	height: 22px;
 	width: 350px;
 	vertical-align: center;
+	color:white;
 	margin-top: 10px;
 }
 
@@ -66,6 +92,16 @@ body{
 	margin-top: 10px;
 }
 
+.textbox2 {
+	border:1px solid #456879;
+	/*background-color: #8FCDBE;*/
+	border-radius: 0px;
+	height: 22px;
+	width: 250px;
+	vertical-align: center;
+	margin-top: 10px;
+}
+
 .btn {
   display: inline-block;
   margin-bottom: 0;
@@ -75,6 +111,7 @@ body{
   vertical-align: middle;
   border: 1px solid transparent;
   border-radius: 0px;
+  font-family: 'calibri';
 
 }
 
@@ -84,7 +121,7 @@ body{
 	font-size: 18px;
 	line-height: 1.428571429;
 	padding: 6px 12px;
-	background-color: tan;
+	background-color: peru;
 	width: 100px;
 	height: 30px;
 	margin: right;
@@ -95,10 +132,29 @@ body{
     background-color: saddlebrown ;
     color: black;
 }
-.btn-secondary{
-	font-size: 14px;
-	color: yellow;
+
+.btn-login{
+	/*border:1px solid #456879;*/
+	color: white;
+	font-size: 18px;
+	line-height: 1.428571429;
+	padding: 6px 12px;
 	background-color: saddlebrown;
+	width: 100px;
+	height: 30px;
+	margin: right;
+}
+.btn-login:hover{
+	cursor:hand;
+    font-weight:bold;
+    background-color: saddlebrown ;
+    color: white;
+}
+
+.btn-secondary{
+	font-size: 17px;
+	color: white;
+	background-color: peru;
 	line-height: 0;
 	padding: 6px 12px;
 	width: 60px;
@@ -107,7 +163,7 @@ body{
 }
 .btn-secondary:hover{
 	color: black;
-	background-color: saddlebrown;
+	background-color: peru;
 }
 
 .btn-add{
@@ -173,7 +229,7 @@ text-align:center;
 color:white;
 text-decoration:none;
 background-color:#018D6B;
-border:1px solid white
+border:3px solid white
 }
 
 #horiznav li a:hover{
@@ -222,7 +278,7 @@ background-color:#018D6B/*give the dropdown a different background colour*/
 
 .reportTable tr:hover
 {
-    background-color:tan;
+    background-color:powderblue;
 }
 
 .helptable .header

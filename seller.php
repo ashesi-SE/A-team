@@ -113,5 +113,24 @@
 			$query="select * from seller where seller_location='$location_name'";
 			return $this->query($query);
 		}
+		
+		//This query authenticates a user
+		function check_user($username,$password){
+		
+			$query="select username, password from users where username='$username' and password=MD5('$password')";
+			 if(!$this->query($query)){
+				return false;
+			}
+			$counter=$this->get_num_rows();
+			if($counter!=1){
+			return false;
+			}
+			return true;
+		}
+		
+		function delete_product($id){
+			$query="delete from seller where seller_id=$id";
+			return $this->query($query);
+		}
 	}
 ?>

@@ -8,6 +8,11 @@
 <body>
 	<table align="center">
 		<tr>
+			<td>
+			<marquee bgcolor="#420612" behavior="alternate" direction="left" scrollamount="3"><font face="Segoe UI Light" color="white" size="5">Welcome to popSellOut!!! The best place for all your on-line shopping. You can sell anything here.</font></marquee>
+				</td>
+		</tr>
+		<tr>
 			<td colspan="2" class="header">
 					<table align="center">
 						<tr>
@@ -15,7 +20,14 @@
 					 			<div align="left"><a href="index.php"><img src="popsell.png" alt="popsell-out" width="250" height="100">
 					 			</a></div>
 							</td>
-							<td width="867px"></td>
+							<td width="667px"></td>
+
+							<td>
+								<a href="login.php" class="btn btn-login">Admin Login</a>
+							</td>
+
+							<td width="50px">
+							</td>
 						<td>
 
 							<!-- place AD button -->
@@ -27,24 +39,7 @@
 				</td>
 			</tr>
       <!-- categories list-->
-      				<tr>
-      					<td>
 
-      				<!--  search -->
-					<table align="right">
-						<tr>
-							<td>
-					<form action="searchad.php" method="post">
-					<div align="right"><input class="textbox" type="text" name="search_text" placeholder="Search by product name or seller name">
-		  			<div class='btn btn-secondary'>
-		  				<input class='btn btn-secondary' type="submit" value="Search"></div>
-		  			</div>
-					</form>
-							</td>
-						</tr>
-					</table>
-						</td>
-					</tr>
       				<tr>
       					<table align="center">
       						<tr>
@@ -73,12 +68,57 @@
 					        <li><a href="help.php">Help & Support</a></li>
 					    </ul>
 					</td>
-						<td width="440px">
-						</td>
+
+					<td width="145px">
+					</td>
+
+					<!--  search -->
+						<td>
+					<form action="searchad.php" method="post">
+					<div align="right"><input class="textbox" type="text" name="search_text" placeholder="Search by product name or seller name">
+		  			<div class='btn btn-secondary'>
+		  				<input class='btn btn-secondary' type="submit" value="Search"></div>
+		  			</div>
+					</form>
+							</td>
 				</tr>
 			</table>
 					
 				</tr>
+				<tr>
+				<table width= "820px" align= "center">
+				<tr>	
+					<td>
+						<marquee behavior="scroll" direction="left">
+						  <img src="phone.jpg" width="200" height="164" alt="phone" />
+						  <img src="rice.jpg" width="200" height="164" alt="rice" />
+						  <img src="shoe.jpg" width="200" height="164" alt="shoe" />
+						  <img src="banku.jpg" width="200" height="164" alt="banku" />
+						  <img src="toshiba.jpg" width="200" height="164" alt="toshiba" />
+						  <img src="shoe1.jpg" width="200" height="164" alt="shoe1" />
+						  <img src="mac.jpg" width="200" height="164" alt="mac" />
+						  <img src="phone.jpg" width="200" height="164" alt="phone" />
+						  <img src="shirt.jpg" width="200" height="164" alt="shirt" />
+						  <img src="fashion.jpg" width="200" height="164" alt="fashion" />
+						  <img src="jollof.jpg" width="200" height="164" alt="jollof" />
+						  <img src="jordans.jpg" width="200" height="164" alt="jordans" />
+						  <img src="coke.jpg" width="200" height="164" alt="coke" />
+						  <img src="bag.jpg" width="200" height="164" alt="bag" />
+						  <img src="banku.jpg" width="200" height="164" alt="banku" />
+						  <img src="jordans.jpg" width="200" height="164" alt="jordans" />
+						  <img src="bag1.jpg" width="200" height="164" alt="bag1" />
+						  <img src="phone.jpg" width="200" height="164" alt="phone" />
+						  <img src="shirt1.jpg" width="200" height="164" alt="shirt1" />
+						  <img src="shoe2.jpg" width="200" height="164" alt="shoe2" />
+						  <img src="phone1.jpg" width="200" height="164" alt="phone1" />
+						  <img src="waakye.jpg" width="200" height="164" alt="waakye" />
+						  <img src="shirt1.jpg" width="200" height="164" alt="shirt1" />
+						  <img src="jordans1.jpg" width="200" height="164" alt="jordans1" />
+						  </marquee>
+					</td>
+				</tr>
+			</table>
+			</tr>
 
 			<tr>
 				<td width="100px">
@@ -126,14 +166,16 @@
 									$style=" class='row2' ";
 								}
 								$id=$row['seller_id'];
+								$pic= $row['product_image'];
                                 echo" <a href='buy_item.php?id=$id'>";
                                 echo'<table width="90%" class="reportTable">';
-								echo"<tr $style><td width='400'class='detaillabel'>";
-								echo '<img src="data:image/jpeg;base64,'.base64_encode($row['product_image'] ).'" width="100" height="80"/><br>';
-								echo"$row[product_name]<br>";
-								echo"<br></td>";
-								echo "<td width='70' class='detaillabel' align='left'>";
-								echo"<b>$row[price]</b></td>";
+								echo"<tr $style><td width='150'class='detaillabel'>";
+								echo '<img src="upload/'.$pic.'" width="120" height="100"/></td>';
+								 // <img src="upload/'.$pic.'"/> 
+								echo"<td class='detaillabels' width='250'>$row[product_name]<br></td>";
+								echo"<td class='detailed' width='350'>$row[product_category], $row[seller_location]</td>";
+								echo "<td class='detailprice' align='left'>";
+								echo"GHc $row[price]</td>";
 								echo "";
 								echo"</tr></table></a>";
 

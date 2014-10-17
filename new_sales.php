@@ -15,7 +15,14 @@
 					 			<div align="left"><a href="index.php"><img src="popsell.png" alt="popsell-out" width="250" height="100">
 					 			</a></div>
 							</td>
-							<td width="867px"></td>
+							<td width="667px"></td>
+
+							<td>
+								<a href="login.php" class="btn btn-login">Admin Login</a>
+							</td>
+
+							<td width="50px">
+							</td>
 						<td>
 
 							<!-- place AD button -->
@@ -27,24 +34,7 @@
 				</td>
 			</tr>
       <!-- categories list-->
-      				<tr>
-      					<td>
 
-      				<!--  search -->
-					<table align="right">
-						<tr>
-							<td>
-					<form action="searchad.php" method="post">
-					<div align="right"><input class="textbox" type="text" name="search_text" placeholder="Search by product name or seller name">
-		  			<div class='btn btn-secondary'>
-		  				<input class='btn btn-secondary' type="submit" value="Search"></div>
-		  			</div>
-					</form>
-							</td>
-						</tr>
-					</table>
-						</td>
-					</tr>
       				<tr>
       					<table align="center">
       						<tr>
@@ -73,8 +63,19 @@
 					        <li><a href="help.php">Help & Support</a></li>
 					    </ul>
 					</td>
-						<td width="440px">
-						</td>
+
+					<td width="145px">
+					</td>
+
+					<!--  search -->
+						<td>
+					<form action="searchad.php" method="post">
+					<div align="right"><input class="textbox" type="text" name="search_text" placeholder="Search by product name or seller name">
+		  			<div class='btn btn-secondary'>
+		  				<input class='btn btn-secondary' type="submit" value="Search"></div>
+		  			</div>
+					</form>
+							</td>
 				</tr>
 			</table>
 					
@@ -103,19 +104,67 @@
 	if(! $obj->connect()){
 			echo"Cannot connect to database";
 	   exit();
-	}         if(isset($_GET['sellerName'])){
-				 $sellerName = $_GET['sellerName'];
-		 		 $sellerLocation = $_GET['sellerLocation'];
-		  		$sellerEmail = $_GET['sellerEmail'];
-		    	$sellerPhone =$_GET['sellerPhone'];
-		    	$productName= $_GET['productName'];
-		    	$productImage= $_GET['productImage'];
-		 $productDetails = $_GET['productDetails'];
-		  $productPrice = $_GET['productPrice'];
-		  $productCategory = $_GET['productCategory'];
-		   $priceType = $_GET['priceType'];
+	}         if(isset($_POST['sellerName'])){
+				 $sellerName = $_POST['sellerName'];
+		 		 $sellerLocation = $_POST['sellerLocation'];
+		  		$sellerEmail = $_POST['sellerEmail'];
+		    	$sellerPhone =$_POST['sellerPhone'];
+		    	$productName= $_POST['productName'];
+		    	// $productImage= $_GET['productImage'];
+		 $productDetails = $_POST['productDetails'];
+		  $productPrice = $_POST['productPrice'];
+		  $productCategory = $_POST['productCategory'];
+		   $priceType = $_POST['priceType'];
 
-		    if(isset($_GET['submit'])){
+		   $allowedExts = array("gif", "jpeg", "jpg", "png");
+			$temp = explode(".", $_FILES["file"]["name"]);
+			$extension = end($temp);
+//print_r($_FILES["file"]);
+if 	(
+		(
+			($_FILES["file"]["type"] == "image/gif")
+			|| ($_FILES["file"]["type"] == "image/jpeg")
+			|| ($_FILES["file"]["type"] == "image/jpg")
+			|| ($_FILES["file"]["type"] == "image/pjpeg")
+			|| ($_FILES["file"]["type"] == "image/x-png")
+			|| ($_FILES["file"]["type"] == "image/png")
+		)
+		//&& ($_FILES["file"]["size"] < 20000)
+		&& in_array($extension, $allowedExts)
+	)
+{
+
+
+	// echo "In parent if statement <br>";
+	if ($_FILES["file"]["error"] > 0) {
+		echo "In first child if statement <br>";
+    	echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+  	}
+  	else {
+  		// echo "In first child else statement <br>";
+	    // echo "Upload: " . $_FILES["file"]["name"] . "<br>";
+	    // echo "Type: " . $_FILES["file"]["type"] . "<br>";
+	    // echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
+	    // echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
+	    if (file_exists("upload/" . $_FILES["file"]["name"])) {
+	    	// echo "In second child if statement <br>";
+	      	//echo $_FILES["file"]["name"] . " already exists. ";
+	    }
+	    else {
+	    	// echo "In second child else statement <br>";
+	      	move_uploaded_file($_FILES["file"]["tmp_name"],
+	      	"upload/" . $_FILES["file"]["name"]);
+	      	//echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
+	    }
+	}
+}
+// "upload/" .
+else {
+	// echo "In parent else statement <br>";
+	echo "Invalid file";
+}
+			$productImage= $_FILES["file"]["name"];
+		    if(isset($_POST['submit'])){
 
 	  $obj->add_seller($sellerName,$sellerLocation,$sellerEmail,$sellerPhone,$productName,
 								$productDetails,$productCategory,$productImage,$productPrice,$priceType);
@@ -140,14 +189,14 @@
 			// echo"<h1>Fill the form below to sell your product</h1>";
 	echo"<table>";
 
-			echo"<form action='new_sales.php' method='GET'>";
+			echo"<form action='new_sales.php' method='POST' enctype='multipart/form-data'>";
 
 				echo"<tr>";
 				echo"<td class='formlabel'>Product Name:</td><td><input class='textbox1' type='text' name='productName'  id='productName'/></td>";
 			echo"</tr>";
 
 			echo"<tr>";
-				echo"<td class='formlabel'>Price:</td> <td><input class='textbox1' type='text'  name='productPrice' id='productPrice'/></td>";
+				echo"<td class='formlabel'>Price (in GHc):</td> <td><input class='textbox1' type='text'  name='productPrice' id='productPrice'/></td>";
 			echo"</tr>";
 
 			echo"<div>";
@@ -168,7 +217,7 @@
 
 
 			echo"<tr>";
-				echo"<td class='formlabel'>Product Description:</td> <td><input class='textbox1' type='text'  style='height:100px;width:300px;font-size:14pt' name ='productDetails' id='productDetails'/></td>
+				echo"<td class='formlabel'>Product Description:</td> <td><textarea class='textbox1' type='text' style='height:100px;width:300px; font-size:12pt' name ='productDetails' id='productDetails'></textarea></td>
 			</tr>";
 	
 			
@@ -186,8 +235,8 @@
 			// echo"</div>";
 	   					echo"<tr><td class='formlabel'> 
 
-				Product Image</td><td><input class='textbox1' name='MAX_FILE_SIZE' value='102400' type='hidden'>
-						<input name='productImage' accept='image/jpeg' type='file'>
+				Product Image</td><td>
+						<input type='file' name='file' id='file'><br>
 
 
 				</td></tr>";
@@ -241,15 +290,27 @@
 			echo"</form>";
 			
 		echo"</table><br><br>";
+		echo "";
 
 	echo"</html>";
 	?>
-
-				</div>
 			</td>
 		</tr>
 
+		<tr class="formlabel" align="center">
+					<td>
+				<br>
+				<b> You can fill the form on the <a href="help.php">Help & Support page</a> if you want to clear your ad from our database</b>
+		
+				<br>
+				</td>
+				</tr>
+		<br><br>
+		<table align="center">
 	</table>
+
+	</table>
+	</div>
 	
 		<!-- footer -->
 		<div class="footer">

@@ -17,7 +17,14 @@
 					 			<div align="left"><a href="index.php"><img src="popsell.png" alt="popsell-out" width="250" height="100">
 					 			</a></div>
 							</td>
-							<td width="867px"></td>
+							<td width="667px"></td>
+
+							<td>
+								<a href="login.php" class="btn btn-login">Admin Login</a>
+							</td>
+
+							<td width="50px">
+							</td>
 						<td>
 
 							<!-- place AD button -->
@@ -29,24 +36,7 @@
 				</td>
 			</tr>
       <!-- categories list-->
-      				<tr>
-      					<td>
 
-      				<!--  search -->
-					<table align="right">
-						<tr>
-							<td>
-					<form action="searchad.php" method="post">
-					<div align="right"><input class="textbox" type="text" name="search_text" placeholder="Search by product name or seller name">
-		  			<div class='btn btn-secondary'>
-		  				<input class='btn btn-secondary' type="submit" value="Search"></div>
-		  			</div>
-					</form>
-							</td>
-						</tr>
-					</table>
-						</td>
-					</tr>
       				<tr>
       					<table align="center">
       						<tr>
@@ -75,8 +65,19 @@
 					        <li><a href="help.php">Help & Support</a></li>
 					    </ul>
 					</td>
-						<td width="440px">
-						</td>
+
+					<td width="145px">
+					</td>
+
+					<!--  search -->
+						<td>
+					<form action="searchad.php" method="post">
+					<div align="right"><input class="textbox" type="text" name="search_text" placeholder="Search by product name or seller name">
+		  			<div class='btn btn-secondary'>
+		  				<input class='btn btn-secondary' type="submit" value="Search"></div>
+		  			</div>
+					</form>
+							</td>
 				</tr>
 			</table>
 					
@@ -113,14 +114,15 @@ $row_counter=0;
 									$style=" class='row2' ";
 								}
 									$id=$row['seller_id'];
+								$pic= $row['product_image'];
                                 echo" <a href='buy_item.php?id=$id'>";
                                 echo'<table width="90%" class="reportTable">';
-								echo"<tr $style><td width='400'class='detaillabel'>";
-								echo '<img src="data:image/jpeg;base64,'.base64_encode($row['product_image'] ).'" width="100" height="80"/><br>';
-								echo"$row[product_name]<br>";
-								echo"<br></td>";
-								echo "<td width='70' class='detaillabel' align='left'>";
-								echo"<b>$row[price]</b></td>";
+								echo"<tr $style><td width='150'class='detaillabel'>";
+								echo '<img src="upload/'.$pic.'" width="120" height="100"/></td>';
+								echo"<td class='detaillabels' width='250'>$row[product_name]<br></td>";
+								echo"<td class='detailed' width='350'>$row[product_category], $row[seller_location]</td>";
+								echo "<td class='detailprice' align='left'>";
+								echo"GHc $row[price]</td>";
 								echo "";
 								echo"</tr></table></a>";
 

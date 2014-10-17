@@ -15,7 +15,14 @@
 					 			<div align="left"><a href="index.php"><img src="popsell.png" alt="popsell-out" width="250" height="100">
 					 			</a></div>
 							</td>
-							<td width="867px"></td>
+							<td width="667px"></td>
+
+							<td>
+								<a href="login.php" class="btn btn-login">Admin Login</a>
+							</td>
+
+							<td width="50px">
+							</td>
 						<td>
 
 							<!-- place AD button -->
@@ -27,24 +34,7 @@
 				</td>
 			</tr>
       <!-- categories list-->
-      				<tr>
-      					<td>
 
-      				<!--  search -->
-					<table align="right">
-						<tr>
-							<td>
-					<form action="searchad.php" method="post">
-					<div align="right"><input class="textbox" type="text" name="search_text" placeholder="Search by product name or seller name">
-		  			<div class='btn btn-secondary'>
-		  				<input class='btn btn-secondary' type="submit" value="Search"></div>
-		  			</div>
-					</form>
-							</td>
-						</tr>
-					</table>
-						</td>
-					</tr>
       				<tr>
       					<table align="center">
       						<tr>
@@ -73,8 +63,19 @@
 					        <li><a href="help.php">Help & Support</a></li>
 					    </ul>
 					</td>
-						<td width="440px">
-						</td>
+
+					<td width="145px">
+					</td>
+
+					<!--  search -->
+						<td>
+					<form action="searchad.php" method="post">
+					<div align="right"><input class="textbox" type="text" name="search_text" placeholder="Search by product name or seller name">
+		  			<div class='btn btn-secondary'>
+		  				<input class='btn btn-secondary' type="submit" value="Search"></div>
+		  			</div>
+					</form>
+							</td>
 				</tr>
 			</table>
 					
