@@ -164,10 +164,11 @@ else {
 	echo "Invalid file";
 }
 			$productImage= $_FILES["file"]["name"];
+			$end_date = date('Y-m-d', strtotime('+2 month'));
 		    if(isset($_POST['submit'])){
 
 	  $obj->add_seller($sellerName,$sellerLocation,$sellerEmail,$sellerPhone,$productName,
-								$productDetails,$productCategory,$productImage,$productPrice,$priceType);
+								$productDetails,$productCategory,$productImage,$productPrice,$priceType,$end_date);
 		  //  $query="insert into seller set seller_name='$sellerName',seller_location='$sellerLocation',seller_email='$sellerEmail', seller_phone='$sellerPhone',product_name='$productName',
 		  //  product_details='$productDetails',product_image='$productImage',price='$productPrice',product_category='$productCategory',price-Type=' $priceType'";
 		  // echo $query";
@@ -187,7 +188,7 @@ else {
 	// echo "<html>";
              
 			// echo"<h1>Fill the form below to sell your product</h1>";
-	echo"<table>";
+	echo"<table align='center'>";
 
 			echo"<form action='new_sales.php' method='POST' enctype='multipart/form-data'>";
 
@@ -230,7 +231,7 @@ else {
 									echo "<option value='$row[category_name]' selected>$row[category_name] </option>";
 									$row = $obj->fetch();
 								}
-								echo "</select></td></tr>"; 
+								echo "</select></td></tr><br>"; 
 								
 			// echo"</div>";
 	   					echo"<tr><td class='formlabel'> 
@@ -281,11 +282,16 @@ else {
 				Phone Number:</td> <td><input class='textbox1' type='text' name='sellerPhone'/>
 			</td>
 			</tr>
+			<tr height='30'></tr><tr><td width='170'></td><td width='200' class='formlabel'>
+			<b> **Please note: Your ad will be automatically deleted from our database 2 months after the upload.<br><br>
+			**You can fill the form on our <a href='help.php'><font color='red'>Help & Support page</font></a> 
+			 indicating to the admin when you want to clear your ad from our database.</b></td></tr>
 			<tr height='30'></tr>
 			<tr>
 				<td width='170'></td>
 				<td><a href='index.php'><input class='btn btn-add' type='submit' value='Save' name='submit'/></a></td><br>
 			</tr>";
+			
 			 
 			echo"</form>";
 			
@@ -300,14 +306,10 @@ else {
 		<tr class="formlabel" align="center">
 					<td>
 				<br>
-				<b> You can fill the form on the <a href="help.php">Help & Support page</a> if you want to clear your ad from our database</b>
 		
 				<br>
 				</td>
 				</tr>
-		<br><br>
-		<table align="center">
-	</table>
 
 	</table>
 	</div>

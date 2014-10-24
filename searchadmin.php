@@ -8,25 +8,24 @@
 <body>
 	<table align="center">
 		<tr>
+			<td>
+			<!-- <marquee bgcolor="#420612" behavior="scroll" direction="left" scrollamount="2"><font face="Segoe UI Light" color="white" size="5">Welcome to popSellOut!!! The best place for all your on-line shopping. You can sell anything here.</font></marquee> -->
+				</td>
+		</tr>
+		<tr>
 			<td colspan="2" class="header">
 					<table align="center">
 						<tr>
 							<td>
-					 			<div align="left"><a href="index.php"><img src="popsell.png" alt="popsell-out" width="250" height="100">
+					 			<div align="left"><a href="admin.php"><img src="popsell.png" alt="popsell-out" width="250" height="100">
 					 			</a></div>
 							</td>
-							<td width="667px"></td>
-
-							<td>
-								<a href="login.php" class="btn btn-login">Admin Login</a>
-							</td>
-
-							<td width="50px">
-							</td>
+							<td width="867px"></td>
 						<td>
 
 							<!-- place AD button -->
-						<a href="new_sales.php" class="btn btn-primary">Post an AD!</a>
+						<a href="index.php" class="btn btn-primary">logout</a>
+						
 						</td>
 					</tr>
 				</table>
@@ -38,38 +37,14 @@
       				<tr>
       					<table align="center">
       						<tr>
-      							<td>
-					    <ul id="horiznav">
-					        <li><a href="index.php">Home</a></li>
-					        <li><a href="#">Categories</a>
-					                <ul>
-					            <li><a href="electronic.php">Electronics</a></li>
-					            <li><a href="food.php">Food</a></li>
-					            <li><a href="fashion.php">Fashion</a></li>
-					            <li><a href="services.php">Services</a></li>
-					            <li><a href="education.php">Education</a></li>
-					        </ul></li>
-					        <li><a href="#">Campus Location</a>
-					                <ul>
-					            <li><a href="oncampus.php">On-Campus Hostel</a></li>
-					            <li><a href="colombiana.php">Colombiana</a></li>
-					            <li><a href="dufie.php">Dufie Platinum</a></li>
-					            <li><a href="charlottes.php">Charlottes</a></li>
-					            <li><a href="masere.php">Masere</a></li>
-					            <li><a href="berekuso.php">Berekuso Town</a></li>
-					            <li><a href="comet.php">Comet</a></li>
-					            <li><a href="other.php">Other</a></li>
-					        </ul></li>
-					        <li><a href="help.php">Help & Support</a></li>
-					    </ul>
-					</td>
+      							
 
 					<td width="145px">
 					</td>
 
 					<!--  search -->
 						<td>
-					<form action="searchad.php" method="post">
+					<form action="searchadmin.php" method="post">
 					<div align="right"><input class="textbox" type="text" name="search_text" placeholder="Search by product name or seller name">
 		  			<div class='btn btn-secondary'>
 		  				<input class='btn btn-secondary' type="submit" value="Search"></div>
@@ -80,6 +55,12 @@
 			</table>
 					
 				</tr>
+				<tr>
+				<table width= "850px" align= "center">
+				<tr>
+				</tr>
+			</table>
+			</tr>
 
 			<tr>
 				<td width="100px">
@@ -124,16 +105,19 @@
 								}
 								$id=$row['seller_id'];
 								$pic= $row['product_image'];
-                                echo" <a href='buy_item.php?id=$id'>";
                                 echo'<table width="90%" class="reportTable">';
 								echo"<tr $style><td width='150'class='detaillabel'>";
 								echo '<img src="upload/'.$pic.'" width="120" height="100"/></td>';
+								 // <img src="upload/'.$pic.'"/> 
 								echo"<td class='detaillabels' width='250'>$row[product_name]<br></td>";
-								echo"<td class='detailed' width='350'>$row[product_category], $row[seller_location]</td>";
+								echo"<td class='detailed' width='300'>$row[product_category], $row[seller_location]</td>";
 								echo "<td class='detailprice' align='left'>";
 								echo"GHc $row[price]</td>";
+								echo "<td width='70' class='detaillabel' align='left'>";
+								echo "<a href='delete.php?id=$row[seller_id]'>Delete</a></td>";
 								echo "";
-								echo"</tr></table></a>";
+								
+								echo"</tr></table>";
 				 				$row=$obj->fetch();
 								$row_counter++;
 		                     }

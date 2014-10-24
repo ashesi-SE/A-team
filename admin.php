@@ -9,7 +9,7 @@
 	<table align="center">
 		<tr>
 			<td>
-			<marquee bgcolor="#420612" behavior="scroll" direction="left" scrollamount="2"><font face="Segoe UI Light" color="white" size="5">Welcome to popSellOut!!! The best place for all your on-line shopping. You can sell anything here.</font></marquee>
+			<!-- <marquee bgcolor="#420612" behavior="scroll" direction="left" scrollamount="2"><font face="Segoe UI Light" color="white" size="5">Welcome to popSellOut!!! The best place for all your on-line shopping. You can sell anything here.</font></marquee> -->
 				</td>
 		</tr>
 		<tr>
@@ -17,7 +17,7 @@
 					<table align="center">
 						<tr>
 							<td>
-					 			<div align="left"><a href="index.php"><img src="popsell.png" alt="popsell-out" width="250" height="100">
+					 			<div align="left"><a href="admin.php"><img src="popsell.png" alt="popsell-out" width="250" height="100">
 					 			</a></div>
 							</td>
 							<td width="867px"></td>
@@ -44,7 +44,7 @@
 
 					<!--  search -->
 						<td>
-					<form action="searchad.php" method="post">
+					<form action="searchadmin.php" method="post">
 					<div align="right"><input class="textbox" type="text" name="search_text" placeholder="Search by product name or seller name">
 		  			<div class='btn btn-secondary'>
 		  				<input class='btn btn-secondary' type="submit" value="Search"></div>
@@ -77,11 +77,6 @@
 							</tr>
 						</table>
 						<table width="90%" class="reportTable">
-							<!-- <tr class="header" >
-								<td width="330">Product Details</td>
-								<td width="30">Seller</td>
-								<td width="30">Contact</td>
-							</tr> -->
 						</table>
 
 							<?php
@@ -131,8 +126,6 @@
 							}
 
 ?>
-
-						</table>
 						<br>
 						<br>
 

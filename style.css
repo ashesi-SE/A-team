@@ -20,6 +20,54 @@ body{
 	margin-top: 10px;
 	/*box-shadow: 2px 2px 2px #CCCCCC;*/
 }
+
+.headtop {
+	background-color: #420612;
+	width: 1250px;
+	height: 30px;
+	text-align: center;
+	font-family: 'calibri';
+	font-size: 26px;
+	color: white;
+}
+
+/*.btext {
+  -moz-animation-duration: 400ms;
+  -moz-animation-name: blink;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: alternate;
+  
+  -webkit-animation-duration: 400ms;
+  -webkit-animation-name: blink;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  
+  animation-duration: 400ms;
+  animation-name: blink;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@-moz-keyframes blink {
+  from {
+    opacity: 1;
+  }
+  
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes blink {
+  from {
+    opacity: 1;
+  }
+  
+  to {
+    opacity: 0;
+  }
+}*/
+
 .pagehead {
 	height: 20px;
 	margin: -60px;
@@ -110,7 +158,7 @@ body{
   white-space: nowrap;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: 0px;
+  border-radius: 4px;
   font-family: 'calibri';
 
 }
@@ -174,10 +222,12 @@ body{
 }
 
 .btn-mail{
-	color: yellow;
+	color: white;
 	background-color: saddlebrown;
-	width: 300px;
-	height: 35px;
+	width: 250px;
+	height: 25px;
+	font-size: 18px;
+	text-decoration: none;
 }
 
 .footer{

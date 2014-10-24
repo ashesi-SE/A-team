@@ -122,81 +122,79 @@
 	        </tr>
 	        <br>
 		<tr>       
-            <td class='formlabel'>
-               <strong>Product:</strong> 
-					<?php echo "$row[product_name]"?>
+            <td class='detaillabels' align="center"></br>
+               <!-- <strong>Product:</strong>  -->
+					<font size="6"><?php echo "$row[product_name]"?></font>
             </td>
         </tr>
          
         <tr>
             <td class='formlabel'>
                 <tr><td class='formlabel'>
-                   <strong>Product Details:</strong>
-                </td></tr>
-                <tr><td class='formlabel'>
-                	<?php echo "$row[product_details]"?>
+                   <strong>Product Description: </strong>
+                	<?php echo " $row[product_details]"?>
                 </td></tr>
             </td>
         </tr>
             
         <tr>       
             <td class='formlabel'>
-            <strong>Product Category:</strong>
-					<?php echo "$row[product_category]"?>
+            <strong>Product Category: </strong>
+					<?php echo " $row[product_category]"?>
             </td>
         </tr>
          
         <tr>       
             <td class='formlabel'>
-				<strong>Price:</strong> 
-				<?php echo "$row[price]"?></td>
+				<strong>Price(GHc): </strong> 
+				<?php echo " $row[price]"?></td>
         </tr>
           
         <tr>       
             <td class='formlabel'>
-				<strong>Price Type:</strong> 
-				<?php echo "$row[price_type]"?></td>
+				<strong>Price Type: </strong> 
+				<?php echo " $row[price_type]"?></td>
         </tr>
          
         <tr>       
             <td class='formlabel'>
-            <strong>Seller Name:</strong>
-			<?php echo "$row[seller_name]"?>
+            <strong>Seller Name: </strong>
+			<?php echo " $row[seller_name]"?>
             </td>
         </tr>
          
         <tr>       
             <td class='formlabel'>
-				<strong>Seller Location:</strong>
-				<?php echo "$row[seller_location]<br></td>"?></td>
+				<strong>Seller Location: </strong>
+				<?php echo " $row[seller_location]<br></td>"?></td>
         </tr>
          
         <tr>       
                 <td class='formlabel'>
-				<strong>Seller Contact Number:</strong>
-				<?php echo "$row[seller_phone]"?></td>
+				<strong>Seller Contact Number: </strong>
+				<?php echo " $row[seller_phone]"?></td>
         </tr>
             
            
             
         <tr>       
                 <td class='formlabel'>
-					<strong>Seller Email:</strong>
-					<?php echo "$row[seller_email]"?>
+					<strong>Seller Email: </strong>
+					<?php echo " $row[seller_email]"?>
                 </td>
      
         </tr>
             <br>
             
         <tr>       
-            <td><br><br>
-					<button>
+            <td align="center"><br>
+					<!-- <button> -->
 					<a href="mailto:<?php echo "$row[seller_email]"?>?" class='btn btn-mail' target="_top">
 					Click to contact seller via Email</a>
-				</button>
+				<!-- </button> -->
             </td>
         </tr>
-            <br>
+            <br><br>
                                             
                                            
 		</table>

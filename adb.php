@@ -7,9 +7,12 @@
  */
 
 define("DB_HOST", 'localhost');
+// define("DB_NAME", 'csashesi_kwabena-ohene-bonsu');
 define("DB_NAME", 'the_trader');
 define("DB_PORT", 3306);
+// define("DB_USER","csashesi_ko15");
 define("DB_USER","root");
+// define("DB_PWORD","db!6fc448");
 define("DB_PWORD","");
 
 define("LOG_LEVEL_SEC",0);

@@ -95,12 +95,15 @@
 								<td width="720"></td>
 							</tr>
 						</table>
-						<table width="90%" class="reportTable">
+						<table width="90%" class="reportTable"></table>
 							<?php
 							include("seller.php");
 			$obj = new seller();
 		$obj->get_product_by_location('Masere');
 		$row = $obj->fetch();
+		if ($row==null){
+											echo "<font size='6' color='red'>No item found</font>";
+										}
 		
 $row_counter=0;	
 							while($row){
@@ -128,8 +131,6 @@ $row_counter=0;
 								$row_counter++;
 							   }
 	?>
-
-							</table>
 							<br>
 							<br>
 

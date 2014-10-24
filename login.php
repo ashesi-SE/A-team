@@ -50,13 +50,13 @@
 			<tr>
 				<td width="30%"></td>
 				<td class='formlabel'>username</td>
-				<td><input class='textbox2' type="text" name="username"></td>
+				<td><input class='textbox2' type="text" name="username" placeholder="username"></td>
 				<td width="30%"></td>
 			</tr>
 			<tr>
 				<td width="30%"></td>
 				<td class='formlabel'>password</td>
-				<td><input class='textbox2' type="password" name="password"></td>
+				<td><input class='textbox2' type="password" name="password" placeholder="******"></td>
 				<td  width="30%"></td>
 			</tr>
 			<tr>

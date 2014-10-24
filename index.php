@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -9,7 +9,8 @@
 	<table align="center">
 		<tr>
 			<td>
-			<marquee bgcolor="#420612" behavior="alternate" direction="left" scrollamount="3"><font face="Segoe UI Light" color="white" size="5">Welcome to popSellOut!!! The best place for all your on-line shopping. You can sell anything here.</font></marquee>
+			<div class="headtop">
+				Welcome to popSellOut!!! The best place for all your on-line shopping. You can sell anything here.</div>
 				</td>
 		</tr>
 		<tr>
@@ -30,8 +31,8 @@
 							</td>
 						<td>
 
-							<!-- place AD button -->
-						<a href="new_sales.php" class="btn btn-primary">Post an AD!</a>
+							<!-- place AD button --><div class="">
+						<a href="new_sales.php" class="btn btn-primary">Post an AD!</a></div>
 						</td>
 					</tr>
 				</table>
@@ -86,10 +87,39 @@
 					
 				</tr>
 				<tr>
-				<table width= "820px" align= "center">
+					<table width= '820px' align= 'center'>
 				<tr>	
 					<td>
-						<marquee behavior="scroll" direction="left">
+						<marquee behavior='scroll' direction='left'>
+						<?php
+						include("seller.php");
+								$obj = new seller();
+
+					if(! $obj->connect()){
+							echo"Error! Sorry we are unable to get any information for you currently";
+					   exit();
+
+				}
+					   if($obj->get_sellers()){
+					   $result=$obj->get_sellers();
+
+					   $row=$obj->fetch();
+					   echo "";
+					   while($row){
+	   				$id=$row['seller_id'];
+								$pic= $row['product_image'];
+                                echo "<a href='buy_item.php?id=$id'>";
+                                echo " ";
+                                echo '<img src="upload/'.$pic.'" width="200" height="164"/></a>';
+                                $row=$obj->fetch();
+                            }
+                        }
+?>
+</marquee></td>
+				</tr>
+			</table>
+
+						<!-- <marquee behavior="scroll" direction="left">
 						  <img src="phone.jpg" width="200" height="164" alt="phone" />
 						  <img src="rice.jpg" width="200" height="164" alt="rice" />
 						  <img src="shoe.jpg" width="200" height="164" alt="shoe" />
@@ -114,10 +144,7 @@
 						  <img src="waakye.jpg" width="200" height="164" alt="waakye" />
 						  <img src="shirt1.jpg" width="200" height="164" alt="shirt1" />
 						  <img src="jordans1.jpg" width="200" height="164" alt="jordans1" />
-						  </marquee>
-					</td>
-				</tr>
-			</table>
+						  </marquee> -->
 			</tr>
 
 			<tr>
@@ -135,16 +162,11 @@
 							</tr>
 						</table>
 						<table width="90%" class="reportTable">
-							<!-- <tr class="header" >
-								<td width="330">Product Details</td>
-								<td width="30">Seller</td>
-								<td width="30">Contact</td>
-							</tr> -->
 						</table>
 
 							<?php
 
-							include("seller.php");
+							//include("seller.php");
 				$obj = new seller();
 
 	if(! $obj->connect()){
@@ -156,6 +178,9 @@
 	   $result=$obj->get_sellers();
 
 	   $row=$obj->fetch();
+	   if ($row==null){
+			echo "<font size='6' color='red'>No item found</font>";
+										}
 	   $row_counter=0;	
 							while($row){
 		
@@ -183,11 +208,8 @@
 								$row_counter++;
 							   }
 							}
-
 ?>
-
-						</table>
-						<br>
+<br>
 						<br>
 
 				</div>
@@ -195,10 +217,8 @@
 		</tr>
 
 	</table>
-	
-		<!-- footer -->
-		<div class="footer">
+<div class='footer'>
 			popSell-Out Copyright 2014 | Powered by The A-Team.
 		</div>
 </body>
-</html>	
+</html>
